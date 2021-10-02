@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="invoice_margin_action">
+        <field name="name">Sale Orders</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">form</field>
+
+
+    </record>
+
+    <record id="invoice_view_form" model="ir.ui.view">
+        <field name="name">Product</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='invoice_line_ids']//tree/field[@name='price_unit']" position="after">
+                <field name="sales_margin"/>
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>
